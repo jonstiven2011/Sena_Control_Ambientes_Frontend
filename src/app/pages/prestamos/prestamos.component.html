@@ -16,12 +16,12 @@
         </div> -->
         <mat-card class="card">
             <mat-card-header>
-                <ng-container *ngIf="(currentRole !== 3) && (currentRole !==2) ">
-                    <a class="ml-auto" (click)="exportAsXLSX()">
+                <ng-container>
+                    <a class="ml-auto" (click)="exportarExcel()">
                         <i class="fas fa-lg fa-file-excel export"></i>
                     </a>
-                    <a (click)="exportToPDF()" style="margin-left: 15px;">
-                        <i class="fas fa-lg fa-file-pdf export"></i>
+                    <a (click)="exportarExcelFilter()" style="margin-left: 15px;">
+                        <img style="width: 12%" src="assets/images/icons/file-csv-solid.svg" />  
                     </a>
                 </ng-container>
             </mat-card-header>
@@ -83,7 +83,7 @@
                 </ng-container> -->
 
                 <ng-container matColumnDef="tools">
-                    <mat-header-cell *matHeaderCellDef mat-sort-header> tools </mat-header-cell>
+                    <mat-header-cell *matHeaderCellDef mat-sort-header> Acción </mat-header-cell>
                     <mat-cell *matCellDef="let row" data-label="Tools">
                         <div class="example-button-container  mr-2">
                             <button mat-mini-fab color="primary" aria-label="Example icon button with a menu icon" (click)="crear(row.id)">

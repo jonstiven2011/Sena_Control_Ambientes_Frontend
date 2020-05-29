@@ -5,6 +5,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { MatDialog } from '@angular/material/dialog';
 import Swal from 'sweetalert2';
 import { PrestamoComponent } from '../prestamo/prestamo.component';
+import { ExportService } from 'src/app/servicios/export.service';
 
 @Component({
   selector: 'app-prestamos',
@@ -20,7 +21,6 @@ export class PrestamosComponent implements OnInit {
     'state',
     'tools'
   ];
-  
   loading = false;
   usuariosLista;
 
@@ -35,7 +35,7 @@ export class PrestamosComponent implements OnInit {
   date = this.dia + " / " + this.mes + " / " + this.year;
   dataSource: MatTableDataSource<any>;
 
-  constructor(private service: PrestamoAmbientesService, private router: Router, public dialog: MatDialog) {
+  constructor(private service: PrestamoAmbientesService, private router: Router, public dialog: MatDialog,private excelService: ExportService) {
     if (this.service.rolUsuario() === 'Auxiliar Almacen') {
       this.router.navigate(['/menu']);
     }
@@ -121,6 +121,16 @@ export class PrestamosComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       this.listaPrestamos();
     });
+  }
+
+  //Funcion exportar a excel
+  exportarExcel():void{
+    this.excelService.exportToExcel(this.dataSource.data, 'lista_prestamos_ambientes');
+  }
+
+  //Funcion exportar a excel con filtro
+  exportarExcelFilter():void{
+    this.excelService.exportToExcel(this.dataSource.filteredData, 'lista_prestamos_ambientes');
   }
 
 }

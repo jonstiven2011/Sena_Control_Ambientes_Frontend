@@ -37,6 +37,8 @@ import { AmbienteComponent } from './pages/ambiente/ambiente.component';
 import { VerAmbientesComponent } from './pages/ver-ambientes/ver-ambientes.component';
 import { PrestamoComponent } from './pages/prestamo/prestamo.component';
 import { PrestamosComponent } from './pages/prestamos/prestamos.component';
+import { ExportService } from '../app/servicios/export.service';
+
 
 @NgModule({
   declarations: [
@@ -69,7 +71,7 @@ import { PrestamosComponent } from './pages/prestamos/prestamos.component';
     BrowserAnimationsModule,
     ReactiveFormsModule
   ],
-  providers: [],
+  providers: [ExportService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
