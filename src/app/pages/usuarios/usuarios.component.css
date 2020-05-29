@@ -1,0 +1,47 @@
+.btn {
+    border-radius: 13px;
+    height: 60px;
+    /* background-image: linear-gradient(to right, #920135 0%, #B32F48 51%, #D94D40 100%); */
+    background-color: #FF7733;
+    border-color: #FF7733;
+}
+
+.card {
+    background: rgb(245, 245, 245);
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.mat-cell {
+    justify-content: center;
+}
+
+fieldset.scheduler-border {
+    border-top: 1px groove;
+    -webkit-box-shadow: 0px 0px 0px 0px #000;
+    box-shadow: 0px 0px 0px 0px #000;
+    margin: 0 0 1.5em 0 !important;
+}
+
+legend.scheduler-border {
+    font-size: 1.2em !important;
+    font-weight: bold !important;
+    text-align: left !important;
+    width: auto;
+    padding: 0 10px;
+    border-bottom: none;
+}
+
+.material-icons.md-28 {
+    cursor: pointer;
+    color: #3A3A59;
+}
+
+.export {
+    color: #3A3A59;
+    cursor: pointer;
+}
+
+.mat-header-cell {
+    justify-content: center;
+}

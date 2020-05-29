@@ -1,0 +1,122 @@
+/* .icon {
+    font-size: 10px;
+    color: #827ffe;
+} */
+
+.container-fluid {
+    /* background-image: url(/assets/images/authentication.png); */
+    background: #EBEBEB;
+    background-size: cover;
+    width: 100%;
+    /* padding-top: 5rem !important; */
+}
+
+.contenedor {
+    height: 100vh;
+}
+
+.form {
+    padding-top: 50px;
+}
+
+.login-list-items {
+    padding: 0;
+}
+
+li {
+    list-style-type: none;
+    text-align: center;
+}
+
+.logo-img {
+    text-align: center;
+    margin: 40px;
+}
+
+mat-form-field {
+    width: 100%;
+}
+
+::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline {
+    color: blue;
+    background-color: white;
+    border-radius: 5px;
+}
+
+::ng-deep .mat-form-field-label {
+    color: blue;
+}
+
+mat-icon {
+    vertical-align: bottom;
+    color: #7B7A7B;
+}
+
+.items1 {
+    padding-left: 0px;
+    padding-right: 0px;
+    text-align-last: start;
+}
+
+.items2 {
+    padding-left: 0px;
+    padding-right: 0px;
+    text-align-last: end;
+}
+
+.btn {
+    border-radius: 13px;
+    height: 60px;
+    /* background-image: linear-gradient(to right, #920135 0%, #B32F48 51%, #D94D40 100%); */
+    background-color: #FF7733;
+    border-color: #FF7733;
+}
+
+hr {
+    background-color: #878687;
+}
+
+.pointer {
+    cursor: pointer;
+}
+
+.back {
+    background-image: url(/assets/images/sena2.jpg);
+    background-size: cover;
+    padding-left: 0px !important;
+    padding-right: 0px !important;
+}
+
+.linear {
+    background: linear-gradient( 55deg, #EBEBEB calc(50% - 1px), #EBEBEB, rgba(74, 164, 160, .493) calc(50% + 1px));
+    /* background: linear-gradient( 50deg, #EBEBEB calc(50% - 1px), #EBEBEB, rgba(255, 255, 255,0.1) calc(50% + 1px) ); */
+    height: 100%;
+    /* margin-left: -15px; */
+}
+
+
+/**********************************ERROR STYLE*****************************************/
+
+mat-form-field.ng-invalid.ng-touched {
+    animation: example;
+    animation-duration: 0.3s;
+    margin-bottom: 15px;
+}
+
+@keyframes example {
+    from {
+        margin-bottom: 0;
+    }
+    to {
+        margin-bottom: 25px;
+    }
+}
+
+
+/* MEDIA QUERY */
+
+@media only screen and (max-width: 768px) {
+    .back {
+        display: none;
+    }
+}

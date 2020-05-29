@@ -1,0 +1,98 @@
+<div class="container content form-group">
+
+    <div id="form1" class="card-body">
+        <span class="login100-form-title">
+            {{title | uppercase}}
+        </span>
+
+        <hr>
+        <div class="progress progress-striped active" style="max-width: 100%;">
+            <div style="width: 100%; display: inherit;" class="progress-bar" id="progressBar" role="progressbar" aria-valuemin="0" aria-valuemax="100">
+                <div class="done-steps-progress-bar progress-bar progress-bar-striped progress-bar-animated bar">
+                    <strong>{{titleCargando | uppercase}}</strong>
+                </div>
+            </div>
+        </div>
+        <hr/>
+        <div class="col-md-12">
+            <label class="col-form-label" for="date">Fecha Prestamo: {{date}}</label>
+        </div>
+        <hr />
+
+        <form class="mb-xl-12" [formGroup]="ApplicantForm">
+            <div class="form-group row">
+                <div class="col-md-6">
+                    <label class="col-form-label" for="name">Nombre Ambiente<strong> *</strong>:</label>
+                    <select *ngIf="!state_ambients" [ngModel]="name" [ngClass]="ApplicantForm.controls.name.invalid && ApplicantForm.controls.name.touched ? 'custom-select is-invalid' : 'custom-select'" formControlName="name" id="name">
+                        <option value="" selected>Seleccione ambiente</option>
+                        <option *ngFor="let ambiente of list_ambients">{{ambiente.name}}</option>
+                    </select>
+                    <input *ngIf="state_ambients" [ngModel]="name" [ngClass]="ApplicantForm.controls.name.invalid && ApplicantForm.controls.name.touched ? 'custom-select is-invalid' : 'custom-select'" formControlName="name" id="name" disabled>
+                    <div *ngIf="ApplicantForm.controls.name.hasError('required') && ApplicantForm.controls.name.touched" class="invalid-feedback">
+                        El nombre del ambiente es requerido
+                    </div>
+                    <div *ngIf="ApplicantForm.controls.name.hasError('pattern') && ApplicantForm.controls.name.touched" class="invalid-feedback">
+                        El nombre no es válido
+                    </div>
+                    <div *ngIf="ApplicantForm.controls.name.hasError('minlength') && ApplicantForm.controls.name.touched" class="invalid-feedback">
+                        El nombre debe tener como mínimo 6 caracteres
+                    </div>
+                    <div *ngIf="ApplicantForm.controls.name.hasError('maxlength') && ApplicantForm.controls.name.touched" class="invalid-feedback">
+                        El nombre no debe superar 70 caracteres
+                    </div>
+                </div>
+                <!-- Cuentadante -->
+                <div class="col-md-6">
+                    <label class="col-form-label" for="cuentadante">Cuentadante<strong> *</strong>:</label>
+                    <select *ngIf="!state_ambients" [(ngModel)]="cuentadante" [ngClass]="ApplicantForm.controls.cuentadante.invalid && ApplicantForm.controls.cuentadante.touched ? 'custom-select is-invalid' : 'custom-select'" formControlName="cuentadante" id="cuentadante">
+                        <option value="" selected >Seleccione cuentadante</option>
+                        <option *ngFor="let users of list_users">{{users.misena_email}}</option>
+                    </select>
+                    <input *ngIf="state_ambients" [ngModel]="cuentadante" [ngClass]="ApplicantForm.controls.cuentadante.invalid && ApplicantForm.controls.cuentadante.touched ? 'custom-select is-invalid' : 'custom-select'" formControlName="cuentadante" id="cuentadante" disabled>
+                    <div *ngIf="ApplicantForm.controls.cuentadante.hasError('required') && ApplicantForm.controls.cuentadante.touched" class="invalid-feedback">
+                        El correo es requerido
+                    </div>
+                    <div *ngIf="ApplicantForm.controls.cuentadante.hasError('pattern') && ApplicantForm.controls.cuentadante.touched" class="invalid-feedback">
+                        El correo no es válido
+                    </div>
+                    <div *ngIf="ApplicantForm.controls.cuentadante.hasError('minlength') && ApplicantForm.controls.cuentadante.touched" class="invalid-feedback">
+                        El correo debe tener como mínimo 6 caracteres
+                    </div>
+                    <div *ngIf="ApplicantForm.controls.cuentadante.hasError('maxlength') && ApplicantForm.controls.cuentadante.touched" class="invalid-feedback">
+                        El correo no debe superar 70 caracteres
+                    </div>
+                </div>
+                <!-- Estado -->
+                <div class="col-md-6" style="display: none;">
+                    <label class="col-form-label" for="state">Estado<strong> *</strong>:</label>
+                    <input  [(ngModel)]="state" formControlName="state" id="state" disabled>
+                </div>
+                <!-- Inicio -->
+                <div class="col-md-6" style="display: none;">
+                    <label class="col-form-label" for="state">Estado<strong> *</strong>:</label>
+                    <input  [(ngModel)]="state" formControlName="state" id="state" disabled>
+                </div>
+
+                 <!-- hora -->
+                <!-- <div class="col-md-12">
+                    <label class="col-form-label" for="hora_start">Hora Inicio<strong> *</strong>:</label>
+                    <input type="time" [(ngModel)]="hora_start" class="form-control" [ngClass]="ApplicantForm.controls.hora_start.invalid && ApplicantForm.controls.hora_start.touched ? 'custom-select is-invalid' : 'custom-select'" formControlName="hora_start" id="hora_start">
+                </div>
+                <div class="col-md-12">
+                    <label class="col-form-label" for="hora_end">Hora Fin<strong> *</strong>:</label>
+                    <input type="time" [(ngModel)]="hora_end" class="form-control" [ngClass]="ApplicantForm.controls.hora_end.invalid && ApplicantForm.controls.hora_end.touched ? 'custom-select is-invalid' : 'custom-select'" formControlName="hora_end" id="hora_end">
+                </div> -->
+
+                <div class="col-md-12">
+                    <label class="col-form-label" for="novedad">Novedad ambiente<strong></strong>:</label>
+                    <textarea [(ngModel)]="novedad" class="form-control" [ngClass]="ApplicantForm.controls.novedad.invalid && ApplicantForm.controls.novedad.touched ? 'custom-select is-invalid' : 'custom-select'" formControlName="novedad" id="novedad"></textarea>
+                </div>
+            </div>
+        </form>
+        <hr>
+
+    </div>
+    <button class="btn btn-primary btn-block" id="btnEnviarCodigoPanel" (click)="sendForm(ApplicantForm.value)">
+        {{title | uppercase}}
+    </button>
+</div>

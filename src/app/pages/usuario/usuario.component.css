@@ -1,0 +1,222 @@
+.bloque {
+    padding: 20px;
+    border: 2px solid #717070;
+    border-radius: 10px;
+    background-color: white;
+}
+
+.disabled {
+    pointer-events: none;
+    cursor: default;
+}
+
+.link-bloque {
+    cursor: pointer;
+}
+
+.icon:hover {
+    transform: scale(1.06);
+}
+
+.icon {
+    transition: all ease-out .2s;
+}
+
+.disabled {
+    pointer-events: none;
+    cursor: default;
+}
+
+.main-title {
+    font-weight: 600;
+    color: #717070;
+}
+
+.float-right {
+    float: right;
+}
+
+.header {
+    height: 10px;
+    background-color: #eeeeee;
+}
+
+body {
+    overflow-x: hidden;
+}
+
+
+/* .content {
+    background: rgb(245, 245, 245);
+    padding: 4% 4% 5% 4%;
+    border-radius: 15px;
+} */
+
+.checkbox-terms {
+    display: inline-block;
+    vertical-align: top;
+    width: 30px;
+    height: 30px;
+}
+
+.label-terms {
+    display: inline-block;
+    vertical-align: bottom;
+    width: 80%;
+    font-size: 12px;
+}
+
+.padding-bottom {
+    padding: 16px 50px;
+}
+
+.title-label {
+    background-color: #dcdde1;
+    padding: 3px;
+    margin-top: 1%;
+    width: 100%;
+}
+
+.btn-evidente {
+    padding: 16px 50px;
+    float: right;
+    border: inherit;
+}
+
+.borde-col {
+    border-right: 2px solid black;
+}
+
+.green {
+    color: green;
+}
+
+hr {
+    border-top: 1px solid #b7b6b6;
+}
+
+.oculto {
+    display: none;
+}
+
+.procesando {
+    width: 25%;
+    color: white;
+}
+
+@media all and (max-width: 992px) {
+    a.datosPersonales {
+        display: block;
+        text-align: center;
+        font-size: 14px;
+    }
+}
+
+@media all and (max-width: 767px) {
+    .validation {
+        display: none;
+    }
+    .document {
+        display: none;
+    }
+    .response {
+        display: none;
+    }
+    a.datosPersonales {
+        display: none;
+    }
+}
+
+.bar {
+    width: 100%;
+    display: block;
+    background-color: #e9aa59;
+}
+
+.steps-progress-bar {
+    display: block;
+    float: left;
+    text-align: center;
+    padding: 10px;
+    font-size: 14px;
+    background-color: #e5e5e5;
+    border-right: 1px solid #c1c0c0;
+}
+
+.done-steps-progress-bar {
+    padding: 10px;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 16px;
+    float: left;
+    text-align: center;
+    border-right: 1px solid #c1c0c0;
+}
+
+.progress {
+    height: 41px;
+    vertical-align: middle;
+}
+
+.last-step {
+    border-right: none;
+}
+
+.text-center {
+    text-align: center !important;
+}
+
+.footer-answer {
+    font-size: 12px;
+    color: #6e6e6e;
+}
+
+.col-form-label {
+    cursor: pointer;
+    color: gray;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.ng-select {
+    display: contents !important;
+}
+
+#modalTerms .modal-dialog,
+.modal-content {
+    height: 90%;
+}
+
+#modalTerms .modal-body {
+    max-height: calc(100% - 120px);
+    overflow-y: scroll;
+    text-align: justify;
+    text-justify: inter-word;
+}
+
+.center-block {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: max-content;
+}
+
+label {
+    font-weight: 800;
+}
+
+button,
+button:focus,
+button:active,
+button:hover {
+    border-color: transparent;
+    box-shadow: inherit;
+}
+
+.btn-primary {
+    cursor: pointer;
+    color: white !important;
+    background-color: #e9aa59;
+}
+
+.table {
+    margin: 0;
+}

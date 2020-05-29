@@ -1,0 +1,120 @@
+<div class="container content form-group">
+    <div class="row">
+        <div class="col-md-18">
+            <div class="tab-content">
+                <div id="form1" class="card-body">
+                    <span class="login100-form-title">
+                        {{title | uppercase}}
+                    </span>
+
+                    <hr>
+                    <div class="progress progress-striped active" style="max-width: 100%;">
+                        <div style="width: 100%; display: inherit;" class="progress-bar" id="progressBar" role="progressbar" aria-valuemin="0" aria-valuemax="100">
+                            <div class="done-steps-progress-bar progress-bar progress-bar-striped progress-bar-animated bar">
+                                <strong>{{titleCargando | uppercase}}</strong>
+                            </div>
+                        </div>
+                    </div>
+                    <hr />
+
+                    <form class="mb-xl-12" [formGroup]="ApplicantForm">
+
+                        <div class="form-group row">
+                            <div class="col-md-6">
+                                <label class="col-form-label" for="name">Nombre y Apellido<strong> *</strong> :</label>
+                                <input [ngModel]="name" [ngClass]="ApplicantForm.controls.name.invalid && ApplicantForm.controls.name.touched ? 'form-control is-invalid' : 'form-control'" formControlName="name" type="text" id="name" placeholder=" Nombre y Apellido">
+                                <div *ngIf="ApplicantForm.controls.name.hasError('required') && ApplicantForm.controls.name.touched" class="invalid-feedback">
+                                    El primer nombre es requerido
+                                </div>
+                                <div *ngIf="ApplicantForm.controls.name.hasError('pattern') && ApplicantForm.controls.name.touched" class="invalid-feedback">
+                                    El primer nombre no es válido. Debe contener solo letras
+                                </div>
+                                <div *ngIf="ApplicantForm.controls.name.hasError('maxlength') && ApplicantForm.controls.name.touched" class="invalid-feedback">
+                                    El primer nombre no debe superar los 45 caracteres
+                                </div>
+                                <div *ngIf="ApplicantForm.controls.name.hasError('minlength') && ApplicantForm.controls.name.touched" class="invalid-feedback">
+                                    El primer nombre debe superar los 3 caracteres
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="col-form-label" for="documentType">Tipo de
+                                    identificación<strong> *</strong> :</label>
+                                <select [ngModel]="document_type" [ngClass]="ApplicantForm.controls.documentType.invalid && ApplicantForm.controls.documentType.touched ? 'custom-select is-invalid' : 'custom-select'" formControlName="documentType" id="documentType">
+                                    <option value="" selected>Seleccione tipo de identificación</option>
+                                    <option *ngFor="let documento of documentType">{{documento}}</option>
+                                </select>
+                                <div *ngIf="ApplicantForm.controls.documentType.hasError('required') && ApplicantForm.controls.documentType.touched" class="invalid-feedback">
+                                    El tipo de documento es requerido
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="col-form-label" for="document">Número de
+                                    identificación<strong> *</strong> :</label>
+                                <input [ngModel]="document" [ngClass]="ApplicantForm.controls.document.invalid && ApplicantForm.controls.document.touched ? 'form-control is-invalid' : 'form-control'" formControlName="document" type="number" id="document" placeholder="Identificación">
+                                <div *ngIf="ApplicantForm.controls.document.hasError('required') && ApplicantForm.controls.document.touched" class="invalid-feedback">
+                                    El número de identificación es requerido
+                                </div>
+                                <div *ngIf="ApplicantForm.controls.document.hasError('minlength') && ApplicantForm.controls.document.touched" class="invalid-feedback">
+                                    El número de identificación debe tener por lo menos 6 caracteres
+                                </div>
+                                <div *ngIf="ApplicantForm.controls.document.hasError('maxlength') && ApplicantForm.controls.document.touched" class="invalid-feedback">
+                                    El número de identificación no debe tener más de 12 caracteres
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="col-form-label" for="email">Correo
+                                    electrónico<strong> *</strong>:</label>
+                                <input [ngModel]="email" [ngClass]="ApplicantForm.controls.email.invalid && ApplicantForm.controls.email.touched ? 'form-control is-invalid' : 'form-control'" formControlName="email" type="email" id="email" placeholder="ejemplo@ejemplo.com">
+                                <div *ngIf="ApplicantForm.controls.email.hasError('required') && ApplicantForm.controls.email.touched" class="invalid-feedback">
+                                    El correo electrónico es requerido
+                                </div>
+                                <div *ngIf="ApplicantForm.controls.email.hasError('pattern') && ApplicantForm.controls.email.touched" class="invalid-feedback">
+                                    El correo electrónico no es válido
+                                </div>
+                                <div *ngIf="ApplicantForm.controls.email.hasError('minlength') && ApplicantForm.controls.email.touched" class="invalid-feedback">
+                                    El correo electrónico debe tener como mínimo 6 caracteres
+                                </div>
+                                <div *ngIf="ApplicantForm.controls.email.hasError('maxlength') && ApplicantForm.controls.email.touched" class="invalid-feedback">
+                                    El correo electrónico no debe superar 70 caracteres
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="col-form-label" for="password">Contraseña<strong> *</strong>:</label>
+                                <input [ngModel]="password" [ngClass]="ApplicantForm.controls.password.invalid && ApplicantForm.controls.password.touched ? 'form-control is-invalid' : 'form-control'" formControlName="password" type="password" id="password" placeholder="Contraseña">
+                                <div *ngIf="ApplicantForm.controls.password.hasError('required') && ApplicantForm.controls.password.touched" class="invalid-feedback">
+                                    La contraseña es requerida
+                                </div>
+                                <div *ngIf="ApplicantForm.controls.password.hasError('pattern') && ApplicantForm.controls.password.touched" class="invalid-feedback">
+                                    La contraseña no es válida
+                                </div>
+                                <div *ngIf="ApplicantForm.controls.password.hasError('minlength') && ApplicantForm.controls.password.touched" class="invalid-feedback">
+                                    La contraseña debe tener como mínimo 6 caracteres
+                                </div>
+                                <div *ngIf="ApplicantForm.controls.password.hasError('maxlength') && ApplicantForm.controls.password.touched" class="invalid-feedback">
+                                    La contraseña no debe superar 10 caracteres
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="col-form-label" for="user_rol">Rol de Usuario<strong> *</strong> :</label>
+                                <select [ngModel]="user_rol" [ngClass]="ApplicantForm.controls.user_rol.invalid && ApplicantForm.controls.user_rol.touched ? 'custom-select is-invalid' : 'custom-select'" formControlName="user_rol" id="user_rol">
+                                    <option value="" selected>Seleccione tipo de identificación</option>
+                                    <option *ngFor="let roles of rol">{{roles}}</option>
+                                </select>
+                                <div *ngIf="ApplicantForm.controls.user_rol.hasError('required') && ApplicantForm.controls.user_rol.touched" class="invalid-feedback">
+                                    El tipo de documento es requerido
+                                </div>
+                            </div>
+                        </div>
+                        <hr />
+
+                    </form>
+
+                </div>
+                <button class="btn btn-primary btn-block" id="btnEnviarCodigoPanel" (click)="sendCodeValidateOTP(ApplicantForm.value)">
+                    {{title | uppercase}}
+                </button>
+            </div>
+
+        </div>
+    </div>
+</div>

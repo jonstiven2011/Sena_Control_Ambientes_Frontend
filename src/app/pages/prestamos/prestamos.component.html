@@ -1,0 +1,127 @@
+<app-navbar></app-navbar>
+
+<div class="contenido m-5">
+    <div class="width-card">
+        <mat-card class="card mb-2 rounded d-flex justify-content-center">
+            <h2>
+                <b>
+                    Lista Prestamos de Ambientes
+                </b>
+            </h2>
+        </mat-card>
+        <hr>
+        <!-- Fecha -->
+        <!-- <div class="col-md-12">
+            <label class="col-form-label" for="date">Fecha Prestamo: {{date}}</label>
+        </div> -->
+        <mat-card class="card">
+            <mat-card-header>
+                <ng-container *ngIf="(currentRole !== 3) && (currentRole !==2) ">
+                    <a class="ml-auto" (click)="exportAsXLSX()">
+                        <i class="fas fa-lg fa-file-excel export"></i>
+                    </a>
+                    <a (click)="exportToPDF()" style="margin-left: 15px;">
+                        <i class="fas fa-lg fa-file-pdf export"></i>
+                    </a>
+                </ng-container>
+            </mat-card-header>
+
+            <div class="row">
+                <div class="col">
+                    <mat-form-field style="width: 100%; ">
+                        <mat-label>Buscador</mat-label>
+                        <input matInput (keyup)="applyFilter($event)" placeholder="Buscar Prestamo">
+                    </mat-form-field>
+                </div>
+
+                <div class="col" style="left: 12%;">
+                    <div class="example-button-container">
+                        <div class="example-button-container" (click)="crear('nuevo')" routerLinkActive="router-link-active">
+                            <button mat-fab color="warn" aria-label="Example icon button with a home icon">
+                                <mat-icon>home_work</mat-icon>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <mat-table [dataSource]="dataSource" matSort class="mat-elevation-z10">
+                
+                <ng-container matColumnDef="nombre">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header> Nombre ambiente </mat-header-cell>
+                    <mat-cell *matCellDef="let row" data-label="Nombre"> {{ row.name }} </mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="cuentadante">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header> Cuentadante </mat-header-cell>
+                    <mat-cell *matCellDef="let row" data-label="Cuentadante"> {{ row.cuentadante }} </mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="hora_start">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header> Fecha Entrega </mat-header-cell>
+                    <mat-cell *matCellDef="let row" data-label="hora_start"> {{ row.created_at }} </mat-cell>
+                </ng-container>
+                
+                <!-- Condicional -->
+                <ng-container matColumnDef="hora_end">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header>Fecha Recibido </mat-header-cell>
+                    <mat-cell *matCellDef="let row" data-label="hora_end"> 
+                        <td mat-cell *ngIf="(row.created_at != row.updated_at)"> {{row.updated_at}} </td>
+                    </mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="state">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header> Estado Ambiente</mat-header-cell>
+                    <mat-cell *matCellDef="let row" data-label="state"> 
+                    <i matTooltip="{{row.state | titlecase}}" class="material-icons" [ngStyle]="{'color':row.state === 'activo' ? '#9FFF33' : '#FF4F33' }"> brightness_1 </i>
+                    </mat-cell>
+                </ng-container>
+
+                <!-- <ng-container matColumnDef="novedad">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header> Novedades </mat-header-cell>
+                    <mat-cell *matCellDef="let row" data-label="novedad"> {{ row.novedad }} </mat-cell>
+                </ng-container> -->
+
+                <ng-container matColumnDef="tools">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header> tools </mat-header-cell>
+                    <mat-cell *matCellDef="let row" data-label="Tools">
+                        <div class="example-button-container  mr-2">
+                            <button mat-mini-fab color="primary" aria-label="Example icon button with a menu icon" (click)="crear(row.id)">
+                              <mat-icon>done_all</mat-icon>
+                            </button>
+                        </div>
+                        <!-- <div class="example-button-container">
+                            <button mat-mini-fab color="warn" aria-label="Example icon button with a menu icon" (click)="borrarAmbiente(row.id, row.name)">
+                              <mat-icon>delete_sweep</mat-icon>
+                            </button>
+                        </div> -->
+                    </mat-cell>
+                </ng-container>
+
+                <mat-header-row *matHeaderRowDef="columnsToDisplay" class="encabezado"></mat-header-row>
+                <mat-row *matRowDef="let row; columns: columnsToDisplay;"></mat-row>
+
+            </mat-table>
+
+
+            <div *ngIf="usuariosLista" class="alert alert-warning text-center mt-3">
+                <h4 class="alert-heading">No se econtraron ambientes registrados</h4>
+                <p>
+                    <i class="fa fa-exclamation fa-2x"></i>
+                </p>
+            </div>
+
+            <div *ngIf="loading" class="alert alert-info text-center mt-3">
+                <h4 class="alert-heading">Cargando...</h4>
+                <p>
+                    <i class="fa fa-sync-alt fa-spin fa-2x"></i>
+                </p>
+                <p class="mb-0">
+                    Espere por favor
+                </p>
+            </div>
+        </mat-card>
+
+
+    </div>
+</div>

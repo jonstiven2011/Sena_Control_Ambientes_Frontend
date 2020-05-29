@@ -1,0 +1,221 @@
+<div class="container content form-group">
+
+    <div id="form1" class="card-body">
+        <span class="login100-form-title">
+            {{title | uppercase}}
+        </span>
+
+        <hr>
+        <div class="progress progress-striped active" style="max-width: 100%;">
+            <div style="width: 100%; display: inherit;" class="progress-bar" id="progressBar" role="progressbar" aria-valuemin="0" aria-valuemax="100">
+                <div class="done-steps-progress-bar progress-bar progress-bar-striped progress-bar-animated bar">
+                    <strong>{{titleCargando | uppercase}}</strong>
+                </div>
+            </div>
+        </div>
+        <hr />
+
+        <form class="mb-xl-12" [formGroup]="ApplicantForm">
+            <div class="form-group row">
+                <!-- nombre ambiente -->
+                <div class="col-md-6">
+                    <label class="col-form-label" for="name">Nombre ambiente<strong> *</strong>:</label>
+                    <select *ngIf="!state_ambients" [ngModel]="name" [ngClass]="ApplicantForm.controls.name.invalid && ApplicantForm.controls.name.touched ? 'custom-select is-invalid' : 'custom-select'" formControlName="name" id="name">
+                        <option value="" selected>Seleccione ambiente</option>
+                        <option *ngFor="let ambiente of list_ambients">{{ambiente.name}}</option>
+                    </select>
+                    <input *ngIf="state_ambients" [ngModel]="name" [ngClass]="ApplicantForm.controls.name.invalid && ApplicantForm.controls.name.touched ? 'custom-select is-invalid' : 'custom-select'" formControlName="name" id="name" disabled>
+                    <div *ngIf="ApplicantForm.controls.name.hasError('required') && ApplicantForm.controls.name.touched" class="invalid-feedback">
+                        El nombre del ambiente es requerido
+                    </div>
+                    <div *ngIf="ApplicantForm.controls.name.hasError('pattern') && ApplicantForm.controls.name.touched" class="invalid-feedback">
+                        El nombre no es válido
+                    </div>
+                    <div *ngIf="ApplicantForm.controls.name.hasError('minlength') && ApplicantForm.controls.name.touched" class="invalid-feedback">
+                        El nombre debe tener como mínimo 6 caracteres
+                    </div>
+                    <div *ngIf="ApplicantForm.controls.name.hasError('maxlength') && ApplicantForm.controls.name.touched" class="invalid-feedback">
+                        El nombre no debe superar 70 caracteres
+                    </div>
+                </div>
+                <!-- cuentadante -->
+                <div class="col-md-6">
+                    <label class="col-form-label" for="cuentadante">Cuentadante<strong> *</strong>:</label>
+                    <select *ngIf="!state_ambients" [(ngModel)]="cuentadante" [ngClass]="ApplicantForm.controls.cuentadante.invalid && ApplicantForm.controls.cuentadante.touched ? 'custom-select is-invalid' : 'custom-select'" formControlName="cuentadante" id="cuentadante">
+                        <option value="" selected >Seleccione cuentadante</option>
+                        <option *ngFor="let users of list_users">{{users.misena_email}}</option>
+                    </select>
+                    <input *ngIf="state_ambients" [ngModel]="cuentadante" [ngClass]="ApplicantForm.controls.cuentadante.invalid && ApplicantForm.controls.cuentadante.touched ? 'custom-select is-invalid' : 'custom-select'" formControlName="cuentadante" id="cuentadante" disabled>
+                    <div *ngIf="ApplicantForm.controls.cuentadante.hasError('required') && ApplicantForm.controls.cuentadante.touched" class="invalid-feedback">
+                        El correo es requerido
+                    </div>
+                    <div *ngIf="ApplicantForm.controls.cuentadante.hasError('pattern') && ApplicantForm.controls.cuentadante.touched" class="invalid-feedback">
+                        El correo no es válido
+                    </div>
+                    <div *ngIf="ApplicantForm.controls.cuentadante.hasError('minlength') && ApplicantForm.controls.cuentadante.touched" class="invalid-feedback">
+                        El correo debe tener como mínimo 6 caracteres
+                    </div>
+                    <div *ngIf="ApplicantForm.controls.cuentadante.hasError('maxlength') && ApplicantForm.controls.cuentadante.touched" class="invalid-feedback">
+                        El correo no debe superar 70 caracteres
+                    </div>
+                </div>
+                <!-- Usabilidad -->
+                <!-- <div class="col-md-12">
+                    <label class="col-form-label" for="usability">Usabilidad<strong> *</strong>:</label>
+                    <input [(ngModel)]="usability" class="form-control" [ngClass]="ApplicantForm.controls.usability.invalid && ApplicantForm.controls.usability.touched ? 'custom-select is-invalid' : 'custom-select'" formControlName="usability" id="usability">
+                </div> -->
+                <div class="col-md-6">
+                    <label class="col-form-label" for="usability">Usabilidad<strong> *</strong>:</label>
+                    <select *ngIf="!state_ambients" [ngModel]="usability" [ngClass]="ApplicantForm.controls.usability.invalid && ApplicantForm.controls.usability.touched ? 'custom-select is-invalid' : 'custom-select'" formControlName="usability" id="usability">
+                        <option value="" selected>Seleccione usabilidad</option>
+                        <option *ngFor="let ambiente of list_ambients">{{ambiente.usability}}</option>
+                    </select>
+                    <input *ngIf="state_ambients" [ngModel]="usability" [ngClass]="ApplicantForm.controls.usability.invalid && ApplicantForm.controls.usability.touched ? 'custom-select is-invalid' : 'custom-select'" formControlName="usability" id="usability" disabled>
+                    <div *ngIf="ApplicantForm.controls.usability.hasError('required') && ApplicantForm.controls.usability.touched" class="invalid-feedback">
+                        La usabilidad es requerida
+                    </div>
+                    <div *ngIf="ApplicantForm.controls.usability.hasError('pattern') && ApplicantForm.controls.usability.touched" class="invalid-feedback">
+                        La usabilidad no es válida
+                    </div>
+                    <div *ngIf="ApplicantForm.controls.usability.hasError('minlength') && ApplicantForm.controls.usability.touched" class="invalid-feedback">
+                        La usabilidad debe tener como mínimo 6 caracteres
+                    </div>
+                    <div *ngIf="ApplicantForm.controls.usability.hasError('maxlength') && ApplicantForm.controls.usability.touched" class="invalid-feedback">
+                        La usabilidad no debe superar 70 caracteres
+                    </div>
+                </div>
+                
+            <!-- Estado -->
+                <div class="col-md-6">
+                    <label class="col-form-label" for="state">Estado<strong> *</strong>:</label>
+                    <select [ngModel]="state" [ngClass]="ApplicantForm.controls.state.invalid && ApplicantForm.controls.state.touched ? 'custom-select is-invalid' : 'custom-select'" formControlName="state" id="state">
+                        <option value="">Seleccione estado</option>
+                        <option value="activo">Activo</option>
+                        <option value="inactivo">Inactivo</option>
+                    </select>
+                    <div *ngIf="ApplicantForm.controls.state.hasError('required') && ApplicantForm.controls.state.touched" class="invalid-feedback">
+                        El estado es requerido
+                    </div>
+                    <div *ngIf="ApplicantForm.controls.state.hasError('pattern') && ApplicantForm.controls.state.touched" class="invalid-feedback">
+                        El estado no es válido
+                    </div>
+                    <div *ngIf="ApplicantForm.controls.state.hasError('minlength') && ApplicantForm.controls.state.touched" class="invalid-feedback">
+                        El estado debe tener como mínimo 6 caracteres
+                    </div>
+                    <div *ngIf="ApplicantForm.controls.state.hasError('maxlength') && ApplicantForm.controls.state.touched" class="invalid-feedback">
+                        El estado no debe superar 70 caracteres
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <label class="col-form-label" for="novelty">Novedad ambiente<strong> *</strong>:</label>
+                    <textarea [(ngModel)]="novelty" class="form-control" [ngClass]="ApplicantForm.controls.novelty.invalid && ApplicantForm.controls.novelty.touched ? 'custom-select is-invalid' : 'custom-select'" formControlName="novelty" id="novelty"></textarea>
+                </div>
+            </div>
+        </form>
+        <hr>
+        <h4 class="text-center">
+            <span>MUEBLES</span>
+        </h4>
+        <hr>
+        <table class="table table-striped table-bordered">
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Descripcion</th>
+                    <th>Cantidad</th>
+                    <th>Acción</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let field of fieldArrayFurnitures; let i = index">
+                    <td>
+                        <input [(ngModel)]="field.furnitures_name" class="form-control" type="text" name="{{field.furnitures_name}}" />
+                    </td>
+                    <td>
+                        <textarea [(ngModel)]="field.furnitures_description" class="form-control" type="text" name="{{field.furnitures_description}}"></textarea>
+                    </td>
+                    <td>
+                        <input [(ngModel)]="field.furnitures_quantity" class="form-control" type="text" name="{{field.furnitures_quantity}}" />
+                    </td>
+                    <td>
+                        <button class="btn btn-default" type="button" (click)="deleteFurnitures(i)">
+                            <i class="material-icons" title="Editar linea de producto"
+                                style="cursor: pointer;">delete</i>
+                        </button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input class="form-control" type="text" id="newAttributeCode" [(ngModel)]="newAttributeFurnitures.furnitures_name" name="newAttributeCode" />
+                    </td>
+                    <td>
+                        <input class="form-control" type="text" id="newAttributeName" [(ngModel)]="newAttributeFurnitures.furnitures_description" name="newAttributeName" />
+                    </td>
+                    <td>
+                        <input class="form-control" type="text" id="newAttributePrice" [(ngModel)]="newAttributeFurnitures.furnitures_quantity" name="newAttributePrice" />
+                    </td>
+                    <td>
+                        <button class="btn btn-default" type="button" (click)="addFurnitures()">
+                            <i class="material-icons" title="Editar linea de producto" style="cursor: pointer;">add</i>
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <div *ngFor="let mueble of "></div>
+        <hr>
+        <h4 class="text-center">
+            <span>EQUIPOS</span>
+        </h4>
+        <hr>
+        <table class="table table-striped table-bordered">
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Descripcion</th>
+                    <th>Cantidad</th>
+                    <th>Acción</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let field of fieldArrayEquipment; let i = index">
+                    <td>
+                        <input [(ngModel)]="field.equipment_name" class="form-control" type="text" name="{{field.equipment_name}}" />
+                    </td>
+                    <td>
+                        <textarea [(ngModel)]="field.equipment_description" class="form-control" type="text" name="{{field.equipment_description}}"></textarea>
+                    </td>
+                    <td>
+                        <input [(ngModel)]="field.equipment_quantity" class="form-control" type="text" name="{{field.equipment_quantity}}" />
+                    </td>
+                    <td>
+                        <button class="btn btn-default" type="button" (click)="deleteEquipment(i)">
+                            <i class="material-icons" title="Editar linea de producto"
+                                style="cursor: pointer;">delete</i>
+                        </button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input class="form-control" type="text" id="newAttributeCode" [(ngModel)]="newAttributeEquipment.equipment_name" name="newAttributeCode" />
+                    </td>
+                    <td>
+                        <input class="form-control" type="text" id="newAttributeName" [(ngModel)]="newAttributeEquipment.equipment_description" name="newAttributeName" />
+                    </td>
+                    <td>
+                        <input class="form-control" type="text" id="newAttributePrice" [(ngModel)]="newAttributeEquipment.equipment_quantity" name="newAttributePrice" />
+                    </td>
+                    <td>
+                        <button class="btn btn-default" type="button" (click)="addEquipment()">
+                            <i class="material-icons" title="Editar linea de producto" style="cursor: pointer;">add</i>
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+    </div>
+    <button class="btn btn-primary btn-block" id="btnEnviarCodigoPanel" (click)="sendForm(ApplicantForm.value)">
+        {{title | uppercase}}
+    </button>
+</div>

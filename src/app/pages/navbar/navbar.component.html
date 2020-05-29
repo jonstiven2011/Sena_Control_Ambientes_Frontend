@@ -1,0 +1,50 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="/menu">
+        <img src="assets/images/icons/sena.png" width="50" height="50" alt="">
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item" routerLinkActive="active">
+                <a class="nav-link" [routerLink]="['/menu']"> Ambientes</a>
+            </li>
+            <li class="nav-item" *ngIf="users_menu" routerLinkActive="active">
+                <a class="nav-link" [routerLink]="['/home']">Registro Ambientes</a>
+            </li>
+            <li class="nav-item" *ngIf="users_menu" routerLinkActive="active">
+                <a class="nav-link" [routerLink]="['/usuarios']">Registro Usuarios</a>
+            </li>
+            <li class="nav-item" *ngIf="users_menu" routerLinkActive="active">
+                <a class="nav-link" [routerLink]="['/prestamos']">Prestamo de Ambientes</a>
+            </li>
+        </ul>
+        <!-- <button class="btn btn-outline-danger my-2 my-sm-0" (click)="salir()">Salir</button> -->
+        <div class="row">
+            <div class="col">
+                <h4 class="text">{{users_name | titlecase}}</h4>
+            </div>
+            <div>
+                <button style="width: 5px;" mat-raised-button [matMenuTriggerFor]="menu">
+                    <mat-icon>account_circle</mat-icon>
+                </button>
+            </div>
+
+
+        </div>
+
+
+        <mat-menu #menu="matMenu">
+            <!-- <button mat-menu-item>
+                <mat-icon>error_outline</mat-icon>
+                <span>Perfil</span>
+            </button> -->
+            <button mat-menu-item (click)="salir()">
+                <mat-icon>power_settings_new</mat-icon>
+                <span>Salir</span>
+            </button>
+        </mat-menu>
+    </div>
+</nav>

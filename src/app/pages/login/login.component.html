@@ -1,0 +1,133 @@
+<!-- <div class="limiter animated fadeInLeft">
+    <div class="container-login100">
+        <div class="wrap-login100 p-t-50 p-b-90">
+            <form #form="ngForm" (ngSubmit)="login( form )" class="login100-form validate-form flex-sb flex-w">
+
+                <span class="login100-form-title p-b-51">
+                    Login
+                </span>
+
+                <span class="text-danger animated fadeIn" *ngIf="form.submitted && form.controls['email'].errors">El
+                    email es obligatorio</span>
+                <div class="wrap-input100 m-b-16">
+                    <input [(ngModel)]="usuario.email" class="input100" type="text" name="email" placeholder="Email" email required>
+
+                    <span class="focus-input100"></span>
+                </div>
+
+                <span class="text-danger animated fadeIn" *ngIf="form.submitted && form.controls['password'].errors">La
+                    contraseña debe de ser más de 6 letras</span>
+                <div class="wrap-input100 m-b-16" data-validate="Password is required">
+                    <input [(ngModel)]="usuario.password" class="input100" minlength="6" type="password" name="password" placeholder="Password" required>
+                    <span class="focus-input100"></span>
+                </div>
+
+                <div class="flex-sb-m w-full p-t-3 p-b-24">
+                    <div class="contact100-form-checkbox">
+                        <input [(ngModel)]="recordarme" class="input-checkbox100" id="ckb1" type="checkbox" name="remember-me">
+                        <label class="label-checkbox100" for="ckb1">
+                            Recordar mi usuario
+                        </label>
+                    </div>
+
+                    <div>
+                        <a routerLink="/registro" class="txt1">
+                            ¿No tienes cuenta?
+                        </a>
+                    </div>
+                </div>
+
+                <div *ngIf="ingresar == true" class="container-login100-form-btn m-t-17">
+                    <button class="login100-form-btn" type="submit">
+                        Ingresar
+                    </button>
+                </div>
+
+                <div *ngIf="loading == true" class="text-center animated fadeIn container icon">
+                    <div class="col">
+                        <i class="fas fa-sync fa-spin fa-5x" style="color: black;"></i>
+                    </div>
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div> -->
+
+
+
+<div class="container-fluid" [ngStyle]="{'filter': 'blur(' + blur + ')'}">
+    <div class="row contenedor">
+        <div class="col-md-4 offset-md-1 content mt-5">
+            <div>
+                <a routerLink="/">
+                    <div class="logo-img">
+                        <img style="width: 30%; height: 40;" src="assets/images/icons/sena.png" />
+                    </div>
+                </a>
+            </div>
+            <form #form="ngForm" (ngSubmit)="login( form )" class="flex-sb flex-w mt-5 form">
+
+                <span class="text-danger animated fadeIn" *ngIf="form.submitted && form.controls['email'].errors">El
+                    email es obligatorio</span>
+                <div class="wrap-input100 m-b-16">
+                    <input [(ngModel)]="usuario.email" class="input100" type="text" name="email" placeholder="Email" email required>
+
+                    <span class="focus-input100"></span>
+                </div>
+
+                <span class="text-danger animated fadeIn" *ngIf="form.submitted && form.controls['password'].errors">La
+                    contraseña debe de ser más de 6 letras</span>
+                <div class="wrap-input100 m-b-16" data-validate="Password is required">
+                    <input [(ngModel)]="usuario.password" class="input100" minlength="6" type="password" name="password" placeholder="Password" required>
+                    <span class="focus-input100"></span>
+                </div>
+
+                <div class="flex-sb-m w-full p-t-3 p-b-24">
+                    <div class="contact100-form-checkbox">
+                        <input [(ngModel)]="recordarme" class="input-checkbox100" id="ckb1" type="checkbox" name="remember-me">
+                        <label class="label-checkbox100" for="ckb1">
+                            Recordar mi usuario
+                        </label>
+                    </div>
+
+                    <div>
+                        <a data-toggle="modal" data-target="#exampleModalCenter" class="txt1">
+                            ¿No tienes cuenta?
+                        </a>
+                    </div>
+                </div>
+
+                <div *ngIf="ingresar == true" class="container-login100-form-btn m-t-17">
+                    <button class="btn btn-danger btn-large btn-block" type="submit">INGRESAR</button>
+                </div>
+
+                <div *ngIf="loading == true" class="text-center animated fadeIn container icon">
+                    <div class="col">
+                        <i class="fas fa-sync fa-spin fa-5x" style="color: black;"></i>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="col-md-7 back">
+            <div class="linear"></div>
+        </div>
+
+        <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLongTitle">Información</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                    </div>
+                    <div class="modal-body">
+                        Debe comunicarse con un administrador del sistema para realizar el porceso de registro.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
