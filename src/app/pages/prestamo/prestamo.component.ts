@@ -25,9 +25,11 @@ export class PrestamoComponent implements OnInit {
   cuentadante;
   hora_start;
   hora_end;
+  initial_novelty;
+  final_novelty;
   state = 'inactivo';
-  novedad;
   state_ambients = false;
+
 
   dia =  new Date().getDate();
   mes = new Date().getMonth();
@@ -46,7 +48,7 @@ export class PrestamoComponent implements OnInit {
     this.date;
 
     //Para mostrar en un select
-    this.service.consultarApiAmbientes().subscribe(ambients => {
+    this.service.consultarEnviromensAmbi().subscribe(ambients => {
       this.list_ambients = ambients;
     }, (error) => {
       console.log(error);
@@ -60,8 +62,6 @@ export class PrestamoComponent implements OnInit {
     //Para mostrar en un select
     this.service.consultarApiUsuario().subscribe(users => {
       this.list_users = users;
-      console.log('datos persona: ', this.list_users);
-      
     }, (error) => {
       console.log(error);
       Swal.fire({
@@ -85,7 +85,8 @@ export class PrestamoComponent implements OnInit {
         // this.hora_start = resp['hora_start'];
         // this.hora_end = resp['hora_end'];
         this.state = 'activo';
-        this.novedad = resp['novedad'];
+        this.initial_novelty = resp['initial_novelty'];
+        this.final_novelty = resp['final_novelty'];
 
       });
     } else {
@@ -99,7 +100,8 @@ export class PrestamoComponent implements OnInit {
       // hora_start: ['', Validators.compose([Validators.required])],
       // hora_end: ['', Validators.compose([Validators.required])],
       state: ['', Validators.compose([Validators.required])],
-      novedad: [''],
+      initial_novelty: [''],
+      final_novelty: [''],
       
     }
     );
@@ -154,6 +156,7 @@ export class PrestamoComponent implements OnInit {
       Swal.showLoading();
       
       if (this.data.id !== 'nuevo') {
+        this.ApplicantForm.value.initial_novelty = this.initial_novelty;
         this.service.getPrestamos(this.data.id, this.ApplicantForm.value).subscribe(resp => {
           this.state = 'activo';
           Swal.fire({

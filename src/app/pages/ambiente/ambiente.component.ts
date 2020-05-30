@@ -29,7 +29,6 @@ export class AmbienteComponent implements OnInit {
   name;
   novelty;
   cuentadante;
-  usability;
   state;
   furnitures = [];
   equipment = [];
@@ -88,7 +87,6 @@ export class AmbienteComponent implements OnInit {
 
         this.name = resp['name'];
         this.cuentadante = resp['cuentadante'];
-        this.usability = resp['usability'];
         this.state = resp['state'];
         this.novelty = resp['novelty'];
 
@@ -113,7 +111,6 @@ export class AmbienteComponent implements OnInit {
     this.ApplicantForm = this.formBuilder.group({
       cuentadante: ['', Validators.compose([Validators.required])],
       name: ['', Validators.compose([Validators.required])],
-      usability: ['', Validators.compose([Validators.required])],
       state: ['', Validators.compose([Validators.required])],
       furnitures: ['', Validators.compose([Validators.required])],
       equipment: ['', Validators.compose([Validators.required])],

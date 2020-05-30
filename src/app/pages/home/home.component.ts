@@ -17,7 +17,6 @@ export class HomeComponent implements OnInit {
     'id',
     'nombre',
     'cuentadante',
-    'usabilidad',
     'estado',
     'tools'
 

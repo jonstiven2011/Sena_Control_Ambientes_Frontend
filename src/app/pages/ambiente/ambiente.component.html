@@ -58,32 +58,7 @@
                     <div *ngIf="ApplicantForm.controls.cuentadante.hasError('maxlength') && ApplicantForm.controls.cuentadante.touched" class="invalid-feedback">
                         El correo no debe superar 70 caracteres
                     </div>
-                </div>
-                <!-- Usabilidad -->
-                <!-- <div class="col-md-12">
-                    <label class="col-form-label" for="usability">Usabilidad<strong> *</strong>:</label>
-                    <input [(ngModel)]="usability" class="form-control" [ngClass]="ApplicantForm.controls.usability.invalid && ApplicantForm.controls.usability.touched ? 'custom-select is-invalid' : 'custom-select'" formControlName="usability" id="usability">
-                </div> -->
-                <div class="col-md-6">
-                    <label class="col-form-label" for="usability">Usabilidad<strong> *</strong>:</label>
-                    <select *ngIf="!state_ambients" [ngModel]="usability" [ngClass]="ApplicantForm.controls.usability.invalid && ApplicantForm.controls.usability.touched ? 'custom-select is-invalid' : 'custom-select'" formControlName="usability" id="usability">
-                        <option value="" selected>Seleccione usabilidad</option>
-                        <option *ngFor="let ambiente of list_ambients">{{ambiente.usability}}</option>
-                    </select>
-                    <input *ngIf="state_ambients" [ngModel]="usability" [ngClass]="ApplicantForm.controls.usability.invalid && ApplicantForm.controls.usability.touched ? 'custom-select is-invalid' : 'custom-select'" formControlName="usability" id="usability" disabled>
-                    <div *ngIf="ApplicantForm.controls.usability.hasError('required') && ApplicantForm.controls.usability.touched" class="invalid-feedback">
-                        La usabilidad es requerida
-                    </div>
-                    <div *ngIf="ApplicantForm.controls.usability.hasError('pattern') && ApplicantForm.controls.usability.touched" class="invalid-feedback">
-                        La usabilidad no es válida
-                    </div>
-                    <div *ngIf="ApplicantForm.controls.usability.hasError('minlength') && ApplicantForm.controls.usability.touched" class="invalid-feedback">
-                        La usabilidad debe tener como mínimo 6 caracteres
-                    </div>
-                    <div *ngIf="ApplicantForm.controls.usability.hasError('maxlength') && ApplicantForm.controls.usability.touched" class="invalid-feedback">
-                        La usabilidad no debe superar 70 caracteres
-                    </div>
-                </div>
+                </div>               
                 
             <!-- Estado -->
                 <div class="col-md-6">

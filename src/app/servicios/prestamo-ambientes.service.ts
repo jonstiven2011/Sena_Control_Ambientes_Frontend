@@ -128,6 +128,10 @@ export class PrestamoAmbientesService {
   savePrestamo(request) {
     return this.http.post(`${this.urlMaster}/prestamo/create`, request, this.httpOptions);
   }
+  //Consultar Ambientes de Enviroments
+  consultarEnviromensAmbi() {
+    return this.http.get(`${this.urlMaster}/enviroments/listEnviroments`);
+  }
 
   //Lista de prestamos
   consultarPrestamos() {

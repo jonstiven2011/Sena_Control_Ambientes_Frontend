@@ -67,26 +67,16 @@
                     <label class="col-form-label" for="state">Estado<strong> *</strong>:</label>
                     <input  [(ngModel)]="state" formControlName="state" id="state" disabled>
                 </div>
-                <!-- Inicio -->
-                <div class="col-md-6" style="display: none;">
-                    <label class="col-form-label" for="state">Estado<strong> *</strong>:</label>
-                    <input  [(ngModel)]="state" formControlName="state" id="state" disabled>
+                <!-- Novedades -->
+                <div *ngIf="!state_ambients" class="col-md-12">
+                    <label class="col-form-label" for="initial_novelty">Novedad Inicial<strong> *</strong>:</label>
+                    <textarea  [(ngModel)]="initial_novelty" class="form-control" [ngClass]="ApplicantForm.controls.initial_novelty.invalid && ApplicantForm.controls.initial_novelty.touched ? 'custom-select is-invalid' : 'custom-select'" formControlName="initial_novelty" id="initial_novelty"></textarea>
                 </div>
-
-                 <!-- hora -->
-                <!-- <div class="col-md-12">
-                    <label class="col-form-label" for="hora_start">Hora Inicio<strong> *</strong>:</label>
-                    <input type="time" [(ngModel)]="hora_start" class="form-control" [ngClass]="ApplicantForm.controls.hora_start.invalid && ApplicantForm.controls.hora_start.touched ? 'custom-select is-invalid' : 'custom-select'" formControlName="hora_start" id="hora_start">
+                <div *ngIf="state_ambients" class="col-md-12">
+                    <label class="col-form-label" for="final_novelty">Novedad Final<strong> *</strong>:</label>
+                    <textarea  [(ngModel)]="final_novelty" class="form-control" [ngClass]="ApplicantForm.controls.final_novelty.invalid && ApplicantForm.controls.final_novelty.touched ? 'custom-select is-invalid' : 'custom-select'" formControlName="final_novelty" id="final_novelty"></textarea>
                 </div>
-                <div class="col-md-12">
-                    <label class="col-form-label" for="hora_end">Hora Fin<strong> *</strong>:</label>
-                    <input type="time" [(ngModel)]="hora_end" class="form-control" [ngClass]="ApplicantForm.controls.hora_end.invalid && ApplicantForm.controls.hora_end.touched ? 'custom-select is-invalid' : 'custom-select'" formControlName="hora_end" id="hora_end">
-                </div> -->
-
-                <div class="col-md-12">
-                    <label class="col-form-label" for="novedad">Novedad ambiente<strong></strong>:</label>
-                    <textarea [(ngModel)]="novedad" class="form-control" [ngClass]="ApplicantForm.controls.novedad.invalid && ApplicantForm.controls.novedad.touched ? 'custom-select is-invalid' : 'custom-select'" formControlName="novedad" id="novedad"></textarea>
-                </div>
+                
             </div>
         </form>
         <hr>
@@ -96,3 +86,4 @@
         {{title | uppercase}}
     </button>
 </div>
+
